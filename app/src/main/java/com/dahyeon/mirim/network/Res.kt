@@ -1,8 +1,8 @@
 package com.dahyeon.mirim.network
 
 import android.content.*
-import com.dahyeon.mirim.token.TokenUtil
-import com.dahyeon.mirim.token.ViewUtil
+import com.dahyeon.mirim.util.TokenUtil
+import com.dahyeon.mirim.util.ViewUtil
 import retrofit2.*
 
 /**

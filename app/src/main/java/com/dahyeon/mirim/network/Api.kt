@@ -1,5 +1,6 @@
 package com.dahyeon.mirim.network
 
+import com.dahyeon.mirim.models.AuthModel
 import com.google.gson.*
 import retrofit2.*
 import retrofit2.http.*
@@ -8,6 +9,9 @@ import retrofit2.http.*
  * Created by root1 on 2017. 11. 23..
  */
 interface Api {
+
+    @GET("refresh")
+    fun refresh(@Header("Authorization") token: String): Call<AuthModel>
 
 //    //방과후 신청
 //    @GET("survey")
