@@ -1,3 +1,41 @@
 <resources>
-    <string name="app_name">Mirim</string>
+    <string name="app_name">미림여정</string>
+
+    <string name="email"> 이메일 </string>
+    <string name="password"> 비밀번호 </string>
+    <string name="passwordck"> 비밀번호 확인 </string>
+    <string name="signin"> 로그인 </string>
+    <string name="signout">로그아웃</string>
+    <string name="signup"> 회원가입 </string>
+    <string name="ck_auto"> 자동 로그인 </string>
+    <string name="text_emailck"> 이메일로 확인 메일 발송 </string>
+    <string name="text_signup1"> 아직 회원이 아니신가요? </string>
+    <string name="text_signup2"> 비밀번호가 기억나지 않으시나요?</string>
+    <string name="text_signin"> 회원이시라면 로그인해주세요 </string>
+
+    <string name="now_passwd"> 현재 비밀번호 </string>
+    <string name="new_passwd"> 새 비밀번호 </string>
+    <string name="new_passwdck"> 새 비밀번호 확인 </string>
+
+    <string name="now_nickname"> 현재 닉네임 </string>
+    <string name="new_nickname"> 새 닉네임 </string>
+
+    <string name="title_1">교칙 공지</string>
+    <string name="title_2">기숙사</string>
+    <string name="title_3">익명 게시판</string>
+    <string name="title_4">중고장터</string>
+    <string name="title_5">내 페이지</string>
+
+    <string name="m2_1">공지사항</string>
+    <string name="m2_2">외박일지</string>
+
+    <string name="m5_1">비밀번호 변경</string>
+    <string name="m5_2">닉네임 변경</string>
+
+    <string name="login">서비스를 이용하시려면 로그인이 필요합니다</string>
+    <string name="logout"> 님</string>
+
+    <string name="ck"> 확인 </string>
+    <string name="ck_2"> 제출 </string>
+    <string name="cancle"> 취소 </string>
 </resources>

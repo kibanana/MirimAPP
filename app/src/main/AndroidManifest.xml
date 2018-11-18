@@ -9,13 +9,27 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.SplashActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+                android:name=".activities.MainActivity"
+                android:theme="@style/notitle" />
+        <activity android:name=".activities.Menu1SchoolActivity" />
+        <activity android:name=".activities.Menu2DomitoryActivity" />
+        <activity android:name=".activities.Menu3BoardActivity" />
+        <activity android:name=".activities.Menu4MarketActivity" />
+        <activity android:name=".activities.Menu5MypageActivity" />
+        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.JoinActivity" />
+        <activity android:name=".activities.M51Activity" />
+        <activity android:name=".activities.M52Activity" />
+        <activity android:name=".activities.M21Activity" />
+        <activity android:name=".activities.M22Activity"></activity>
     </application>
 
 </manifest>

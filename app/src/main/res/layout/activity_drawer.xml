@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer"
+    android:layout_width="260dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="right"
+    android:background="#09500f"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/editbox_background"
+        android:paddingLeft="20px"
+        android:paddingRight="20px"
+        android:textSize="15dp"
+        >
+        <TextView
+            android:id="@+id/drawer_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20px"
+            android:paddingRight="20px"
+            android:textSize="15dp"
+            android:text="@string/logout"
+            android:gravity="center"
+            />
+        <Button
+            android:id="@+id/drawer_btn_out"
+            style="?android:textAppearanceSmall"
+            android:layout_width="200dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="7dp"
+            android:text="@string/signout"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:background="@drawable/btn_design" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/shape"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="1px"
+        >
+        <Button
+            android:id="@+id/menu1"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:text="@string/title_1"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/shape"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="1px">
+
+        <Button
+            android:id="@+id/menu2"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:text="@string/title_2"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/shape"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="1px"
+        >
+
+        <Button
+            android:id="@+id/menu3"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:text="@string/title_3"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/shape"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="1px"
+        >
+
+        <Button
+            android:id="@+id/menu4"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:text="@string/title_4"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/shape"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="1px"
+        >
+
+        <Button
+            android:id="@+id/menu5"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:text="@string/title_5"/>
+    </LinearLayout>
+
+</LinearLayout>
