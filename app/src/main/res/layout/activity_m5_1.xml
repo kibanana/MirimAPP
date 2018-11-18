@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dahyeon.mirim.activities.M51Activity">
+    tools:context="com.mirimapp.mirim.activities.M51Activity">
 
     <ImageButton
         android:layout_width="70sp"

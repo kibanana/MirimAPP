@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dahyeon.mirim.activities.Menu3BoardActivity">
+    tools:context="com.mirimapp.mirim.activities.Menu3BoardActivity">
 
     <ImageButton
         android:layout_width="70sp"
@@ -35,6 +35,36 @@
 
         <include
             layout="@layout/activity_drawer" />
+
+        <android.support.constraint.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview_m3_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintVertical_weight="9"
+                android:scrollbarFadeDuration="0"
+                android:scrollbarSize="5dp"
+                android:scrollbarThumbVertical="@android:color/darker_gray"
+                android:scrollbars="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/button_m3_insert"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <Button
+                android:id="@+id/button_m3_insert"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="게시글 쓰기"
+                app:layout_constraintVertical_weight="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerview_m3_list" />
+        </android.support.constraint.ConstraintLayout>
 
     </android.support.v4.widget.DrawerLayout>
 

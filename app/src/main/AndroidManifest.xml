@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.dahyeon.mirim">
+    package="com.dahyeon.mirim">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme">
-        <activity android:name=".activities.SplashActivity">
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.mirimapp.mirim.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,21 +19,20 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".activities.MainActivity"
-                android:theme="@style/notitle" />
-        <activity android:name=".activities.Menu1SchoolActivity" />
-        <activity android:name=".activities.Menu2DomitoryActivity" />
-        <activity android:name=".activities.Menu3BoardActivity" />
-        <activity android:name=".activities.Menu4MarketActivity" />
-        <activity android:name=".activities.Menu5MypageActivity" />
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.JoinActivity" />
-        <activity android:name=".activities.M51Activity" />
-        <activity android:name=".activities.M52Activity" />
-        <activity android:name=".activities.M21Activity" />
-        <activity android:name=".activities.M22Activity"></activity>
+            android:name="com.mirimapp.mirim.activities.SplashActivity"
+            android:theme="@style/notitle" />
+        <activity android:name="com.mirimapp.mirim.activities.Menu1SchoolActivity" />
+        <activity android:name="com.mirimapp.mirim.activities.Menu2DomitoryActivity" />
+        <activity android:name="com.mirimapp.mirim.activities.Menu3BoardActivity" />
+        <activity android:name="com.mirimapp.mirim.activities.Menu4MarketActivity" />
+        <activity android:name="com.mirimapp.mirim.activities.Menu5MypageActivity" />
+        <activity android:name="com.mirimapp.mirim.activities.LoginActivity" />
+        <activity android:name="com.mirimapp.mirim.activities.JoinActivity" />
+        <activity android:name="com.mirimapp.mirim.activities.M51Activity" />
+        <activity android:name="com.mirimapp.mirim.activities.M52Activity" />
+        <activity android:name="com.mirimapp.mirim.activities.M21Activity" />
+        <activity android:name="com.mirimapp.mirim.activities.M22Activity" />
+        <activity android:name="com.mirimapp.mirim.activities.ViewActivity"></activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

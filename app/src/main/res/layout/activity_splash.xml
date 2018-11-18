@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dahyeon.mirim.activities.SplashActivity">
+    tools:context="com.mirimapp.mirim.activities.SplashActivity">
 
     <ImageView
         android:layout_width="100dp"

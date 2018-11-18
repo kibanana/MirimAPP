@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dahyeon.mirim.activities.Menu2DomitoryActivity">
+    tools:context="com.mirimapp.mirim.activities.Menu2DomitoryActivity">
     <ImageButton
         android:layout_width="70sp"
         android:layout_height="50sp"
