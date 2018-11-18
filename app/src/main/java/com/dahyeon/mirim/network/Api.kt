@@ -13,6 +13,11 @@ interface Api {
     @GET("refresh")
     fun refresh(@Header("Authorization") token: String): Call<AuthModel>
 
+    //로그인
+    @POST("auth")
+    @Headers("Content-Type: application/json")
+    fun auth(@Body body: Any?): Call<AuthModel>
+
 //    //방과후 신청
 //    @GET("survey")
 //    fun loadSurvey(@Header("Authorization") token: String): Call<Array<SurveyModel>>
@@ -51,10 +56,6 @@ interface Api {
 //    @Headers("Content-Type: application/json")
 //    fun applyOut(@Header("Authorization") token: String, @Body body: Any?): Call<Void>
 //
-//    //로그인
-//    @POST("student/auth")
-//    @Headers("Content-Type: application/json")
-//    fun signIn(@Body body: Any?): Call<AuthModel>
 //
 //    //회원가입
 //    @POST("student/signup")

@@ -8,7 +8,7 @@ open class BaseActivity : AppCompatActivity() {
         ViewUtil.showToast(this, message)
     }
 
-    fun saveToken(token: String, isAccess: Boolean = true) = TokenUtil.saveToken(this, token, isAccess)
+    fun saveToken(token: String, isAccessToken: Boolean = true) = TokenUtil.saveToken(this, token, isAccessToken)
 
     fun getToken(isAccess: Boolean = true): String = TokenUtil.getToken(this, isAccess)
 }

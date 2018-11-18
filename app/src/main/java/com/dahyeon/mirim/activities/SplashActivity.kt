@@ -40,7 +40,7 @@ class SplashActivity : BaseActivity() {
                         }
                     }.let {
                         if(it != null) {
-                            showToast(it!!)
+                            showToast(it)
                             startActivity(Intent(applicationContext, LoginActivity::class.java))
                             finish()
                         } else {

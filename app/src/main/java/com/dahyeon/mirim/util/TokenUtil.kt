@@ -11,20 +11,20 @@ object TokenUtil {
         return pref
     }
 
-    fun saveToken(context: Context, token: String, isAccess: Boolean = true) {
+    fun saveToken(context: Context, token: String, isAccessToken: Boolean = true) {
         val editor = getPref(context).edit()
-        editor.putString(getKey(isAccess), token)
+        editor.putString(getKey(isAccessToken), token)
         editor.apply()
     }
 
-    fun removeToken(context: Context, isAccess: Boolean = true) {
+    fun removeToken(context: Context, isAccessToken: Boolean = true) {
         val editor = getPref(context).edit()
-        editor.remove(getKey(isAccess))
+        editor.remove(getKey(isAccessToken))
         editor.apply()
     }
 
-    fun getToken(context: Context, isAccess: Boolean = true): String {
-        val token = getPref(context).getString(getKey(isAccess), "")
+    fun getToken(context: Context, isAccessToken: Boolean = true): String {
+        val token = getPref(context).getString(getKey(isAccessToken), "")
 
         if (token.isNullOrEmpty()) {
             return ""
