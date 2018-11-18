@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object Connector {
     var api: Api
 
-    private const val url = "http://dsm2015.cafe24.com:80/v2/"
+    private const val url = "http://mirim-app-backend.herokuapp.com/api/v1/"
 
     init {
         val logger = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
