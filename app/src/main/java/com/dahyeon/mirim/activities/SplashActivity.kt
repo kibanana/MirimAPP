@@ -2,7 +2,6 @@ package com.dahyeon.mirim.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import com.dahyeon.mirim.R
 import com.dahyeon.mirim.models.AuthModel
 import com.dahyeon.mirim.network.Connector
