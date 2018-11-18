@@ -23,8 +23,8 @@ abstract class Res<T>(val context: Context, val check401: Boolean = true): Callb
             ViewUtil.showToast(context, "다시 로그인 하세요")
             TokenUtil.removeToken(context)
         }
-        
-        when(code){
+
+        when(code) {
             500 -> ViewUtil.showToast(context, "서버 오류")
             422 -> {
                 ViewUtil.showToast(context, "로그인이 필요합니다")
