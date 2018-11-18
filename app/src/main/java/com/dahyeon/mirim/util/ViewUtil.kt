@@ -1,4 +1,4 @@
-package com.dahyeon.mirim.token
+package com.dahyeon.mirim.util
 
 import android.content.Context
 import android.widget.Toast
