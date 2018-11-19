@@ -42,13 +42,13 @@ class SplashActivity : BaseActivity() {
                     }.let {
                         if(it != null) {
                             showToast(it)
-                            startActivity(Intent(applicationContext, SigninActivity::class.java))
+                            startActivity(Intent(context, SigninActivity::class.java))
                             finish()
                         } else {
                             val accessToken = getToken()
 
                             if (accessToken.isNotEmpty()) {
-                                startActivity(Intent(applicationContext, MainActivity::class.java))
+                                startActivity(Intent(context, MainActivity::class.java))
                                 finish()
                             }
                         }
