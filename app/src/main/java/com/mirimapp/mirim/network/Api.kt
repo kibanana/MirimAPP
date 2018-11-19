@@ -9,14 +9,17 @@ import retrofit2.http.*
  * Created by root1 on 2017. 11. 23..
  */
 interface Api {
-
+    // token refresh
     @GET("refresh")
     fun refresh(@Header("Authorization") token: String): Call<AuthModel>
 
     //로그인
     @POST("auth")
     @Headers("Content-Type: application/json")
-    fun auth(@Body body: Any?): Call<AuthModel>
+    fun auth(@Body body: Map<String, Any>): Call<AuthModel>
+
+    @GET("check/email/{email}")
+    fun checkEmailIsDuplicate(@Path("email") email: String): Call<Void>
 
 //    //방과후 신청
 //    @GET("survey")
