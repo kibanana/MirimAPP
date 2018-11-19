@@ -16,10 +16,8 @@ interface Api {
     //로그인
     @POST("auth")
     @Headers("Content-Type: application/json")
-    fun auth(@Body body: Map<String, Any>): Call<AuthModel>
+    fun auth(@Body body: Map<String, String>): Call<AuthModel>
 
-    @GET("check/email/{email}")
-    fun checkEmailIsDuplicate(@Path("email") email: String): Call<Void>
 
 //    //방과후 신청
 //    @GET("survey")
