@@ -18,7 +18,7 @@ class SplashActivity : BaseActivity() {
         val refreshToken = getToken(false)
 
         if (refreshToken.isEmpty()) {
-            startActivity(Intent(applicationContext, LoginActivity::class.java))
+            startActivity(Intent(applicationContext, SigninActivity::class.java))
             finish()
         } else {
             Connector.api.refresh(
@@ -42,7 +42,7 @@ class SplashActivity : BaseActivity() {
                     }.let {
                         if(it != null) {
                             showToast(it)
-                            startActivity(Intent(applicationContext, LoginActivity::class.java))
+                            startActivity(Intent(applicationContext, SigninActivity::class.java))
                             finish()
                         } else {
                             val accessToken = getToken()

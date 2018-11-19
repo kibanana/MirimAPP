@@ -7,14 +7,14 @@
     android:layout_marginLeft="25dp"
     android:layout_marginRight="25dp"
     android:gravity="center"
-    tools:context="com.mirimapp.mirim.activities.LoginActivity">
+    tools:context="com.mirimapp.mirim.activities.SigninActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
     <EditText
-        android:id="@+id/edittext_main_email"
+        android:id="@+id/edittext_signin_email"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:hint="@string/email"
@@ -34,7 +34,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/edittext_main_password"
+        android:id="@+id/edittext_signin_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/password"
@@ -47,7 +47,7 @@
         android:layout_marginBottom="10dp"/>
 
     <Button
-        android:id="@+id/button_main_login"
+        android:id="@+id/button_signin_login"
         style="?android:textAppearanceSmall"
         android:layout_width="200dp"
         android:layout_gravity="center"
@@ -60,7 +60,7 @@
         />
 
     <TextView
-        android:id="@+id/textview_main_signup"
+        android:id="@+id/textview_signin_go_to_signup"
         style="?android:textAppearanceSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
