@@ -49,27 +49,34 @@ class SignupActivity : BaseActivity() {
         }
 
         textview_signup_send_certify_mail.setOnClickListener {
-            val email = edittext_signup_email.text.toString() + email_suffix
+            val emailPrefix = edittext_signup_email.text.toString()
 
-            Connector.api.checkEmailIsDuplicate(email).enqueue(object: Res<Void>(this) {
-                override fun callBack(code: Int, body: Void?) {
-                    when(code) {
-                        200 -> null
-                        204 -> "이미 회원가입이 완료된 이메일입니다."
-                        208 -> "이미 인증된 이메일입니다."
-                        else -> {
-                            "오류: $code"
-                        }
-                    }.let {
-                        if(it != null) {
-                            showToast(it)
-                        } else {
-                            val dialog = EmailCertifyDialog(this@SignupActivity)
-                            dialog.show()
+            if(emailPrefix.isEmpty()) {
+                showToast("이메일을 입력해 주세요.")
+            } else {
+                val emailWithSuffix = emailPrefix + getString(R.string.email_suffix)
+
+                Connector.api.sendCertifyEmail(
+                    emailWithSuffix
+                ).enqueue(object : Res<Void>(this) {
+                    override fun callBack(code: Int, body: Void?) {
+                        when (code) {
+                            200 -> null
+                            204 -> "이미 회원가입이 완료된 이메일입니다."
+                            208 -> "이미 인증된 이메일입니다."
+                            400 -> "유효한 이메일 포맷이 아닙니다."
+                            else -> "오류: $code"
+                        }.let {
+                            if (it != null) {
+                                showToast(it)
+                            } else {
+                                val dialog = EmailCertifyDialog(context, emailWithSuffix)
+                                dialog.show()
+                            }
                         }
                     }
-                }
-            })
+                })
+            }
         }
     }
 }
