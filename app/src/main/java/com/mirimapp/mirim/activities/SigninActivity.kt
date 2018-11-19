@@ -22,9 +22,11 @@ class SigninActivity : BaseActivity() {
             if (emailPrefix.isEmpty() || password.isEmpty()) {
                 showToast("값을 모두 입력하세요.")
             } else {
+                val emailWithSuffix = emailPrefix + getString(R.string.email_suffix)
+
                 Connector.api.auth(
                     hashMapOf(
-                        "email" to "$emailPrefix@e-mirim.hs.kr",
+                        "email" to emailWithSuffix,
                         "pw" to password
                     )
                 ).enqueue(object: Res<AuthModel>(this) {
