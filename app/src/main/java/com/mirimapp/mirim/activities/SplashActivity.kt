@@ -27,7 +27,8 @@ class SplashActivity : BaseActivity() {
                 override fun callBack(code: Int, body: AuthModel?) {
                     when(code) {
                         200 -> {
-                            saveToken(body!!.token); null
+                            saveToken(body!!.token)
+                            null
                         }
                         401 -> {
                             "다시 로그인 하세요"
