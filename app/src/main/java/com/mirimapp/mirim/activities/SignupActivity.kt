@@ -4,7 +4,12 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.Button
 import com.dahyeon.mirim.R
+import com.dahyeon.mirim.R.string.email
+import com.mirimapp.mirim.dialogs.EmailCertifyDialog
+import com.mirimapp.mirim.network.Connector
+import com.mirimapp.mirim.network.Res
 import com.mirimapp.mirim.util.BaseActivity
 import kotlinx.android.synthetic.main.activity_signup.*
 import kotlinx.android.synthetic.main.dialog_email_certify.*
@@ -12,6 +17,8 @@ import kotlinx.android.synthetic.main.dialog_email_certify.*
 class SignupActivity : BaseActivity() {
     val passwordRegex = "^[a-zA-Z0-9_*]{5,12}$".toRegex()
     //비밀번호는 5~12글자 이하, _, * 특수문자만 사용 가능
+
+    val email_suffix = "@e-mirim.hs.kr"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +29,7 @@ class SignupActivity : BaseActivity() {
         }
 
         button_signup_confirm.setOnClickListener {
-            val email = edittext_signup_email.text.toString() + "@e-mirim.hs.kr" //이메일 받은 것 + @e-mirim.hs.kr
+            val email = edittext_signup_email.text.toString() + email_suffix
             val password = edittext_signup_password.text.toString()
             val passwordToCheck = edittext_signup_password_check.text.toString()
 
@@ -42,24 +49,27 @@ class SignupActivity : BaseActivity() {
         }
 
         textview_signup_send_certify_mail.setOnClickListener {
-            // TODO email duplicate check 호출
+            val email = edittext_signup_email.text.toString() + email_suffix
 
-            val dialog = LayoutInflater.from(this)
-            val dialogLayout = dialog.inflate(
-                R.layout.dialog_email_certify,
-                null
-            )
-            val authDialog = Dialog(this)
-            authDialog.setContentView(dialogLayout)
-            authDialog.show()
-        }
-    }
-
-    fun registerDialog() {
-        button_certify_confirm.setOnClickListener {
-            val certifyCode = edittext_certify_code.text.toString()
-
-            // TODO email certify 호출
+            Connector.api.checkEmailIsDuplicate(email).enqueue(object: Res<Void>(this) {
+                override fun callBack(code: Int, body: Void?) {
+                    when(code) {
+                        200 -> null
+                        204 -> "이미 회원가입이 완료된 이메일입니다."
+                        208 -> "이미 인증된 이메일입니다."
+                        else -> {
+                            "오류: $code"
+                        }
+                    }.let {
+                        if(it != null) {
+                            showToast(it)
+                        } else {
+                            val dialog = EmailCertifyDialog(this@SignupActivity)
+                            dialog.show()
+                        }
+                    }
+                }
+            })
         }
     }
 }
