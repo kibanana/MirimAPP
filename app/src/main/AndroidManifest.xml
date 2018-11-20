@@ -30,9 +30,9 @@
         <activity android:name="com.mirimapp.mirim.activities.M51Activity" />
         <activity android:name="com.mirimapp.mirim.activities.M52Activity" />
         <activity android:name="com.mirimapp.mirim.activities.M21Activity" />
-        <activity android:name="com.mirimapp.mirim.activities.M22Activity" />
-        <activity android:name="com.mirimapp.mirim.activities.ViewActivity" />
-        <activity android:name=".ContentviewActivity"></activity>
+        <activity android:name="com.mirimapp.mirim.activities.M22Activity" >
+
+        </activity>
     </application>
 
 </manifest>
