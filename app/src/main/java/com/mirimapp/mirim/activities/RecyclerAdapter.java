@@ -1,6 +1,7 @@
 package com.mirimapp.mirim.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.dahyeon.mirim.R;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -45,14 +48,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
             view.setOnCreateContextMenuListener(this); //2. 리스너 등록
         }
 
-
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {  // 3. 메뉴 추가U
 
             MenuItem Edit = menu.add(Menu.NONE, 1001, 1, "편집");
             MenuItem Delete = menu.add(Menu.NONE, 1002, 2, "삭제");
+            MenuItem View = menu.add(Menu.NONE, 1003, 3, "상세 보기");
             Edit.setOnMenuItemClickListener(onEditMenu);
             Delete.setOnMenuItemClickListener(onEditMenu);
+            View.setOnMenuItemClickListener(onEditMenu);
         }
 
         // 4. 캔텍스트 메뉴 클릭시 동작을 설정
@@ -103,6 +107,38 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
                         notifyItemRemoved(getAdapterPosition());
                         notifyItemRangeChanged(getAdapterPosition(), mList.size());
                         break;
+
+                        case 1003:
+                            AlertDialog.Builder builder2 = new AlertDialog.Builder(mContext);
+                            view = LayoutInflater.from(mContext)
+                                    .inflate(R.layout.view_box, null, false);
+                            builder2.setView(view);
+
+                            final Button ButtonCheck = (Button) view.findViewById(R.id.btn_dialog_ck);
+                            final TextView tv_name = (TextView) view.findViewById(R.id.view_tv_name);
+                            final TextView tv_writer = (TextView) view.findViewById(R.id.view_tv_writer);
+                            final TextView tv_date = (TextView) view.findViewById(R.id.view_tv_date);
+                            final TextView tv_hit = (TextView) view.findViewById(R.id.view_tv_hit);
+                            final TextView tv_content = (TextView)  view.findViewById(R.id.view_tv_content);
+
+                            tv_name.setText((mList).get(getAdapterPosition()).getName());
+                            tv_writer.setText((mList).get(getAdapterPosition()).getSub_writer());
+                            tv_date.setText((mList).get(getAdapterPosition()).getSub_date());
+                            tv_hit.setText("5"); // 조회수는 DB에서 얻어와야 함
+                            tv_content.setText((mList).get(getAdapterPosition()).getSub_content());
+
+                            notifyItemChanged(getAdapterPosition());
+
+
+                            final AlertDialog dialog2 = builder2.create();
+                            ButtonCheck.setOnClickListener(new View.OnClickListener() {
+                                public void onClick(View v) {
+
+                                    dialog2.dismiss();
+                                }
+                            });
+                            dialog2.show();
+                            break;
                 }
                 return true;
             }

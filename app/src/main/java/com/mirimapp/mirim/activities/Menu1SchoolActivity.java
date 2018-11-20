@@ -120,6 +120,7 @@ public class Menu1SchoolActivity extends AppCompatActivity {
             }
         });
 
+
         //이거(2) 가 리사이클러뷰 관련
                     mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_m1_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));

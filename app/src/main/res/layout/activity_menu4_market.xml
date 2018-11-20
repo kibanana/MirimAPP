@@ -33,9 +33,6 @@
             android:gravity="center"
             android:textSize="48sp"/>
 
-        <include
-            layout="@layout/activity_drawer" />
-
         <android.support.constraint.ConstraintLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -61,10 +58,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:text="게시글 쓰기"
+                android:backgroundTint="#098015"
+                android:textColor="#ffffff"
                 app:layout_constraintVertical_weight="1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerview_m4_list" />
         </android.support.constraint.ConstraintLayout>
+
+        <include
+            layout="@layout/activity_drawer" />
 
     </android.support.v4.widget.DrawerLayout>
 
