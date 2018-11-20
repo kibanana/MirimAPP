@@ -2,6 +2,8 @@
     <string name="app_name">미림여정</string>
 
     <string name="email"> 이메일 </string>
+    <string name="email_suffix"> \@e-mirim.hs.kr </string>
+    <!--<string name="email_suffix"> \@gmail.com </string>-->
     <string name="password"> 비밀번호 </string>
     <string name="passwordck"> 비밀번호 확인 </string>
     <string name="signin"> 로그인 </string>

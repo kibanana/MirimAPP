@@ -18,7 +18,7 @@ class SplashActivity : BaseActivity() {
         val refreshToken = getToken(false)
 
         if (refreshToken.isEmpty()) {
-            startActivity(Intent(applicationContext, LoginActivity::class.java))
+            startActivity(Intent(applicationContext, SigninActivity::class.java))
             finish()
         } else {
             Connector.api.refresh(
@@ -27,7 +27,8 @@ class SplashActivity : BaseActivity() {
                 override fun callBack(code: Int, body: AuthModel?) {
                     when(code) {
                         200 -> {
-                            saveToken(body!!.token); null
+                            saveToken(body!!.token)
+                            null
                         }
                         401 -> {
                             "다시 로그인 하세요"
@@ -41,13 +42,13 @@ class SplashActivity : BaseActivity() {
                     }.let {
                         if(it != null) {
                             showToast(it)
-                            startActivity(Intent(applicationContext, LoginActivity::class.java))
+                            startActivity(Intent(context, SigninActivity::class.java))
                             finish()
                         } else {
                             val accessToken = getToken()
 
                             if (accessToken.isNotEmpty()) {
-                                startActivity(Intent(applicationContext, MainActivity::class.java))
+                                startActivity(Intent(context, MainActivity::class.java))
                                 finish()
                             }
                         }

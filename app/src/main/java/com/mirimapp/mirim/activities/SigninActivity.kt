@@ -2,41 +2,35 @@ package com.mirimapp.mirim.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import com.dahyeon.mirim.R
 import com.mirimapp.mirim.models.AuthModel
 import com.mirimapp.mirim.network.Connector
 import com.mirimapp.mirim.network.Res
 import com.mirimapp.mirim.util.BaseActivity
-import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_signin.*
 
-class LoginActivity : BaseActivity() {
+class SigninActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_signin)
 
-        button_main_login.setOnClickListener {
-            val emailPrefix = edittext_main_email.text
-            val password = edittext_main_password.text
+        button_signin_login.setOnClickListener {
+            val emailPrefix = edittext_signin_email.text.toString()
+            val password = edittext_signin_password.text.toString()
 
             if (emailPrefix.isEmpty() || password.isEmpty()) {
                 showToast("값을 모두 입력하세요.")
             } else {
-                Log.d("@@@@@", "before auth")
-                Log.d("@@@@@", hashMapOf(
-                    "email" to "$emailPrefix@e-mirim.hs.kr",
-                    "pw" to password
-                ).toString())
+                val emailWithSuffix = emailPrefix + getString(R.string.email_suffix)
 
                 Connector.api.auth(
                     hashMapOf(
-                        "email" to "$emailPrefix@e-mirim.hs.kr",
+                        "email" to emailWithSuffix,
                         "pw" to password
                     )
                 ).enqueue(object: Res<AuthModel>(this) {
                     override fun callBack(code: Int, body: AuthModel?) {
-                        Log.d("@@@@@", "callback")
                         when(code) {
                             200 -> {
                                 saveToken(body!!.token)
@@ -59,6 +53,10 @@ class LoginActivity : BaseActivity() {
                     }
                 })
             }
+        }
+
+        textview_signin_go_to_signup.setOnClickListener {
+            startActivity(Intent(applicationContext, SignupActivity::class.java))
         }
     }
 }

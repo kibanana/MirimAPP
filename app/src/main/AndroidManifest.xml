@@ -11,23 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.mirimapp.mirim.activities.MainActivity">
+        <activity android:name="com.mirimapp.mirim.activities.SplashActivity"
+                    android:theme="@style/notitle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.mirimapp.mirim.activities.SplashActivity"
-            android:theme="@style/notitle" />
+        <activity android:name="com.mirimapp.mirim.activities.MainActivity" />
         <activity android:name="com.mirimapp.mirim.activities.Menu1SchoolActivity" />
         <activity android:name="com.mirimapp.mirim.activities.Menu2DomitoryActivity" />
         <activity android:name="com.mirimapp.mirim.activities.Menu3BoardActivity" />
         <activity android:name="com.mirimapp.mirim.activities.Menu4MarketActivity" />
         <activity android:name="com.mirimapp.mirim.activities.Menu5MypageActivity" />
-        <activity android:name="com.mirimapp.mirim.activities.LoginActivity" />
-        <activity android:name="com.mirimapp.mirim.activities.JoinActivity" />
+        <activity android:name="com.mirimapp.mirim.activities.SigninActivity" />
+        <activity android:name="com.mirimapp.mirim.activities.SignupActivity" />
         <activity android:name="com.mirimapp.mirim.activities.M51Activity" />
         <activity android:name="com.mirimapp.mirim.activities.M52Activity" />
         <activity android:name="com.mirimapp.mirim.activities.M21Activity" />
