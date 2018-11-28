@@ -2,6 +2,7 @@ package com.mirimapp.mirim.network
 
 import com.mirimapp.mirim.models.AuthModel
 import com.google.gson.*
+import com.mirimapp.mirim.models.NoticeModel
 import retrofit2.*
 import retrofit2.http.*
 
@@ -32,6 +33,8 @@ interface Api {
     @Headers("Content-Type: application/json")
     fun signup(@Body body: Map<String, String>): Call<Void>
 
+    @GET("notice")
+    fun getNoticeList(@Header("Authorization") token: String): Call<ArrayList<NoticeModel>>
 //    //방과후 신청
 //    @GET("survey")
 //    fun loadSurvey(@Header("Authorization") token: String): Call<Array<SurveyModel>>

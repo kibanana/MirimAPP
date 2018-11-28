@@ -19,6 +19,9 @@ import android.widget.TextView
 
 import com.dahyeon.mirim.R
 import com.mirimapp.mirim.models.NoticeModel
+import com.mirimapp.mirim.network.Connector
+import com.mirimapp.mirim.network.Res
+import com.mirimapp.mirim.util.BaseActivity
 import kotlinx.android.synthetic.main.activity_drawer.*
 import kotlinx.android.synthetic.main.activity_m2_1.*
 
@@ -53,13 +56,14 @@ class Adapter(val items: ArrayList<NoticeModel>, val context: Context): Recycler
     }
 }
 
-
-class M21Activity : AppCompatActivity() {
+class M21Activity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         title = "공지사항"
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_m2_1)
+
+        recyclerview_m21_list.layoutManager = LinearLayoutManager(this)
 
         val buttonOpen = findViewById<View>(R.id.menu) as ImageButton
         buttonOpen.setOnClickListener {
@@ -128,5 +132,15 @@ class M21Activity : AppCompatActivity() {
 
             dialog.show()
         }
+
+        Connector.api.getNoticeList(getToken()).enqueue(
+            object: Res<ArrayList<NoticeModel>>(this) {
+                override fun callBack(code: Int, body: ArrayList<NoticeModel>?) {
+                    if (code == 200) {
+                        recyclerview_m21_list.adapter = Adapter(body!!, context)
+                    }
+                }
+            }
+        )
     }
 }
