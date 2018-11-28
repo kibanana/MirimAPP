@@ -20,7 +20,6 @@
             </intent-filter>
         </activity>
         <activity android:name="com.mirimapp.mirim.activities.MainActivity" />
-        <activity android:name="com.mirimapp.mirim.activities.Menu1SchoolActivity" />
         <activity android:name="com.mirimapp.mirim.activities.Menu2DomitoryActivity" />
         <activity android:name="com.mirimapp.mirim.activities.Menu3BoardActivity" />
         <activity android:name="com.mirimapp.mirim.activities.Menu4MarketActivity" />

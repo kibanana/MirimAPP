@@ -66,20 +66,10 @@ public class M22Activity extends AppCompatActivity {
             }
         });
 
-        Button menu_btn1 = findViewById(R.id.menu1);
-        Button menu_btn2 = findViewById(R.id.menu2);
-        Button menu_btn3 = findViewById(R.id.menu3);
-        Button menu_btn4 = findViewById(R.id.menu4);
-        Button menu_btn5 = findViewById(R.id.menu5);
-
-        menu_btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Menu1SchoolActivity.class);
-                startActivity(intent);
-                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.fade_in);
-            }
-        });
+        Button menu_btn2 = findViewById(R.id.button_drawer_to_dormitory_activity);
+        Button menu_btn3 = findViewById(R.id.button_drawer_to_board_activity);
+        Button menu_btn4 = findViewById(R.id.button_drawer_to_market_activity);
+        Button menu_btn5 = findViewById(R.id.button_drawer_to_mypage_activity);
 
         menu_btn2.setOnClickListener(new View.OnClickListener() {
             @Override

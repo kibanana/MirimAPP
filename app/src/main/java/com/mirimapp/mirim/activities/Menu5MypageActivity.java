@@ -32,23 +32,13 @@ public class Menu5MypageActivity extends AppCompatActivity {
             }
         });
 
-        Button menu_btn1 = findViewById(R.id.menu1);
-        Button menu_btn2 = findViewById(R.id.menu2);
-        Button menu_btn3 = findViewById(R.id.menu3);
-        Button menu_btn4 = findViewById(R.id.menu4);
-        Button menu_btn5 = findViewById(R.id.menu5);
+        Button menu_btn2 = findViewById(R.id.button_drawer_to_dormitory_activity);
+        Button menu_btn3 = findViewById(R.id.button_drawer_to_board_activity);
+        Button menu_btn4 = findViewById(R.id.button_drawer_to_market_activity);
+        Button menu_btn5 = findViewById(R.id.button_drawer_to_mypage_activity);
 
         LinearLayout menu5_1 = findViewById(R.id.m5_1);
         LinearLayout menu5_2 = findViewById(R.id.m5_2);
-
-        menu_btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Menu1SchoolActivity.class);
-                startActivity(intent);
-                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.fade_in);
-            }
-        });
 
         menu_btn2.setOnClickListener(new View.OnClickListener() {
             @Override

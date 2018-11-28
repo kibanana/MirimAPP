@@ -13,21 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@drawable/main_bg"
-        >
-        <ImageButton
-            android:id="@+id/imagebutton_main_to_school_activity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/icon_school"
-            android:scaleType="centerInside"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:background="@drawable/main_bg">
         <ImageButton
             android:id="@+id/imagebutton_main_to_dormitory_activity"

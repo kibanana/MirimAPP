@@ -30,8 +30,5 @@ class MainActivity : BaseActivity() {
         imagebutton_main_to_mypage_activity.setOnClickListener {
             startActivity(Intent(applicationContext, Menu5MypageActivity::class.java))
         }
-        imagebutton_main_to_school_activity.setOnClickListener {
-            startActivity(Intent(applicationContext, Menu1SchoolActivity::class.java))
-        }
     }
 }
