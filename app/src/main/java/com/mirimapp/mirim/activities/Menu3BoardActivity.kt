@@ -15,50 +15,47 @@ import android.widget.ImageButton
 import android.widget.TextView
 
 import com.dahyeon.mirim.R
-import com.mirimapp.mirim.models.NoticeModel
+import com.mirimapp.mirim.models.PostModel
 import com.mirimapp.mirim.network.Connector
 import com.mirimapp.mirim.network.Res
 import com.mirimapp.mirim.util.BaseActivity
 import kotlinx.android.synthetic.main.activity_drawer.*
-import kotlinx.android.synthetic.main.activity_m2_1.*
+import kotlinx.android.synthetic.main.activity_menu3_board.*
 import kotlinx.android.synthetic.main.edit_box.*
 
 import java.util.ArrayList
 
+class PostViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    val title = view.findViewById<TextView>(R.id.textview_menu3_board_recycleritem_title)
+    val createdAt = view.findViewById<TextView>(R.id.textview_menu3_board_recycleritem_created_at)
 
-class NoticeViewHolder(view: View): RecyclerView.ViewHolder(view) {
-    val title = view.findViewById<TextView>(R.id.textview_m_2_1_recycleritem_title)
-    val owner = view.findViewById<TextView>(R.id.textview_m_2_1_recycleritem_owner)
-    val createdAt = view.findViewById<TextView>(R.id.textview_m_2_1_recycleritem_created_at)
-
-    fun bind(notice: NoticeModel, context: Context) {
-        title.text = notice.title
-        owner.text = notice.ownerEmail
-        createdAt.text = notice.createdAt
+    fun bind(post: PostModel, context: Context) {
+        title.text = post.title
+        createdAt.text = post.createdAt
     }
 }
 
-class NoticeAdapter(val items: ArrayList<NoticeModel>, val context: Context): RecyclerView.Adapter<NoticeViewHolder>() {
+class PostAdapter(val items: ArrayList<PostModel>, val context: Context): RecyclerView.Adapter<PostViewHolder>() {
     override fun getItemCount(): Int = items.size
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoticeViewHolder {
-        return NoticeViewHolder(
-            LayoutInflater.from(context).inflate(R.layout.activity_m2_1_recycleritem, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
+        return PostViewHolder(
+            LayoutInflater.from(context).inflate(R.layout.activity_menu3_board_recycleritem, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: NoticeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         holder.bind(items[position], context)
     }
 }
 
-class M21Activity : BaseActivity() {
-    fun loadNotices() {
-        Connector.api.getNoticeList(getToken()).enqueue(
-            object: Res<ArrayList<NoticeModel>>(this) {
-                override fun callBack(code: Int, body: ArrayList<NoticeModel>?) {
+class Menu3BoardActivity : BaseActivity() {
+    fun loadPosts() {
+        Connector.api.getPostList(getToken()).enqueue(
+            object: Res<ArrayList<PostModel>>(this) {
+                override fun callBack(code: Int, body: ArrayList<PostModel>?) {
                     if (code == 200) {
-                        recyclerview_m21_list.adapter = NoticeAdapter(body!!, context)
+                        recyclerview_m3_list.adapter = PostAdapter(body!!, context)
                     }
                 }
             }
@@ -66,13 +63,13 @@ class M21Activity : BaseActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        title = "공지사항"
+        title = "익명 게시판"
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_m2_1)
+        setContentView(R.layout.activity_menu3_board)
 
-        recyclerview_m21_list.layoutManager = LinearLayoutManager(this)
-        loadNotices()
+        recyclerview_m3_list.layoutManager = LinearLayoutManager(this)
+        loadPosts()
 
         val buttonOpen = findViewById<View>(R.id.menu) as ImageButton
         buttonOpen.setOnClickListener {
@@ -107,9 +104,9 @@ class M21Activity : BaseActivity() {
             overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.fade_in)
         }
 
-        button_m21_insert.setOnClickListener {
-            val builder = AlertDialog.Builder(this@M21Activity)
-            val view = LayoutInflater.from(this@M21Activity)
+        button_m3_insert.setOnClickListener {
+            val builder = AlertDialog.Builder(this@Menu3BoardActivity)
+            val view = LayoutInflater.from(this@Menu3BoardActivity)
                 .inflate(R.layout.edit_box, null, false)
             builder.setView(view)
 
@@ -117,12 +114,12 @@ class M21Activity : BaseActivity() {
 
             dialog.show()
             dialog.setOnDismissListener {
-                loadNotices()
+                loadPosts()
             }
 
             dialog.button_dialog_submit.setOnClickListener {
                 // 4. 사용자가 입력한 내용을 가져와서
-                Connector.api.addNotice(getToken(), hashMapOf(
+                Connector.api.addPost(getToken(), hashMapOf(
                     "title" to dialog.edittext_dialog_title.text.toString(),
                     "content" to dialog.edittext_dialog_content.text.toString()
                 )).enqueue(
