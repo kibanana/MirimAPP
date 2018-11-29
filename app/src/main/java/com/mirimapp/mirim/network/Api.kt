@@ -35,6 +35,10 @@ interface Api {
 
     @GET("notice")
     fun getNoticeList(@Header("Authorization") token: String): Call<ArrayList<NoticeModel>>
+
+    @POST("notice")
+    @Headers("Content-Type: application/json")
+    fun addNotice(@Header("Authorization") token: String, @Body body: Map<String, String>): Call<Void>
 //    //방과후 신청
 //    @GET("survey")
 //    fun loadSurvey(@Header("Authorization") token: String): Call<Array<SurveyModel>>

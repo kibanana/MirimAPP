@@ -1,5 +1,6 @@
 package com.mirimapp.mirim.activities
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -24,10 +26,9 @@ import com.mirimapp.mirim.network.Res
 import com.mirimapp.mirim.util.BaseActivity
 import kotlinx.android.synthetic.main.activity_drawer.*
 import kotlinx.android.synthetic.main.activity_m2_1.*
+import kotlinx.android.synthetic.main.edit_box.*
 
 import java.util.ArrayList
-import java.util.Calendar
-import java.util.GregorianCalendar
 
 
 class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
@@ -57,6 +58,18 @@ class Adapter(val items: ArrayList<NoticeModel>, val context: Context): Recycler
 }
 
 class M21Activity : BaseActivity() {
+    fun loadNotices() {
+        Connector.api.getNoticeList(getToken()).enqueue(
+            object: Res<ArrayList<NoticeModel>>(this) {
+                override fun callBack(code: Int, body: ArrayList<NoticeModel>?) {
+                    if (code == 200) {
+                        recyclerview_m21_list.adapter = Adapter(body!!, context)
+                    }
+                }
+            }
+        )
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         title = "공지사항"
 
@@ -64,6 +77,7 @@ class M21Activity : BaseActivity() {
         setContentView(R.layout.activity_m2_1)
 
         recyclerview_m21_list.layoutManager = LinearLayoutManager(this)
+        loadNotices()
 
         val buttonOpen = findViewById<View>(R.id.menu) as ImageButton
         buttonOpen.setOnClickListener {
@@ -99,48 +113,36 @@ class M21Activity : BaseActivity() {
         }
 
         button_m21_insert.setOnClickListener {
-            // 2. 레이아웃 파일 edit_box.xml 을 불러와서 화면에 다이얼로그를 보여줍니다.
             val builder = AlertDialog.Builder(this@M21Activity)
-
             val view = LayoutInflater.from(this@M21Activity)
                 .inflate(R.layout.edit_box, null, false)
             builder.setView(view)
 
-            val ButtonSubmit = view.findViewById<View>(R.id.button_dialog_submit) as Button
-            val editTextName = view.findViewById<View>(R.id.edittext_dialog_name) as EditText
-            val editTextSub_Writer = view.findViewById<View>(R.id.edittext_dialog_sub_writer) as EditText
-            val editTextSub_Content = view.findViewById<View>(R.id.edittext_dialog_sub_content) as EditText
-
-            ButtonSubmit.text = "추가"
-
             val dialog = builder.create()
 
-            // 3. 다이얼로그에 있는 삽입 버튼을 클릭하면
-            ButtonSubmit.setOnClickListener {
-                // 4. 사용자가 입력한 내용을 가져와서
-                val strName = editTextName.text.toString()
-                val strSub_writer = editTextSub_Writer.text.toString()
-                val cal = GregorianCalendar()
-                val y = cal.get(Calendar.YEAR)
-                val m = cal.get(Calendar.MONTH) + 1 //+1 해야 올바른값
-                val d = cal.get(Calendar.DAY_OF_MONTH)
-                val strSub_Date = y.toString() + "." + m + "." + d
-                val strSub_Content = editTextSub_Content.text.toString()
-
-                dialog.dismiss()
-            }
-
             dialog.show()
-        }
-
-        Connector.api.getNoticeList(getToken()).enqueue(
-            object: Res<ArrayList<NoticeModel>>(this) {
-                override fun callBack(code: Int, body: ArrayList<NoticeModel>?) {
-                    if (code == 200) {
-                        recyclerview_m21_list.adapter = Adapter(body!!, context)
-                    }
-                }
+            dialog.setOnDismissListener {
+                loadNotices()
             }
-        )
+
+            dialog.button_dialog_submit.setOnClickListener {
+                // 4. 사용자가 입력한 내용을 가져와서
+                Connector.api.addNotice(getToken(), hashMapOf(
+                    "title" to dialog.edittext_dialog_title.text.toString(),
+                    "content" to dialog.edittext_dialog_content.text.toString()
+                )).enqueue(
+                    object: Res<Void>(this) {
+                        override fun callBack(code: Int, body: Void?) {
+                            if (code == 201) {
+                                showToast("게시글 추가 완료")
+                                dialog.dismiss()
+                            } else {
+                                showToast("문제가 발생했습니다.")
+                            }
+                        }
+                    }
+                )
+            }
+        }
     }
 }
