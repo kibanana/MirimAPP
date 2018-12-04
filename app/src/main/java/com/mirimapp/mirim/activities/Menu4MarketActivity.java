@@ -15,12 +15,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.dahyeon.mirim.R;
+import com.mirimapp.mirim.util.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class Menu4MarketActivity extends AppCompatActivity {
+public class Menu4MarketActivity extends BaseActivity {
 
     // 일단 뭐라도 나타나야 하니까 name이랑 sub를 String 배열을 이용하여 만들어 보았음.
     private String[] names = {"[공구] 1", "[판매] 2", "[판매] 3", "[판매] 4", "[공구] 5", "[공구] 6", "[판매] 7", "[공구] 8", "[공구] 9"};
@@ -106,6 +107,17 @@ public class Menu4MarketActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Menu5MypageActivity.class);
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.fade_in);
+            }
+        });
+
+        Button logout = findViewById(R.id.drawer_btn_out);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeToken(true);
+                removeToken(false);
+                startActivity(new Intent(getApplicationContext(), SigninActivity.class));
+                finish();
             }
         });
         /*

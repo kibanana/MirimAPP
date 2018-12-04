@@ -104,6 +104,13 @@ class Menu3BoardActivity : BaseActivity() {
             overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.fade_in)
         }
 
+        drawer_btn_out.setOnClickListener {
+            removeToken(true)
+            removeToken(false)
+            startActivity(Intent(applicationContext, SigninActivity::class.java))
+            finish()
+        }
+
         button_m3_insert.setOnClickListener {
             val builder = AlertDialog.Builder(this@Menu3BoardActivity)
             val view = LayoutInflater.from(this@Menu3BoardActivity)

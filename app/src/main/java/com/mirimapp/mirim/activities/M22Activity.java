@@ -3,7 +3,6 @@ package com.mirimapp.mirim.activities;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -13,11 +12,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import com.dahyeon.mirim.R;
+import com.mirimapp.mirim.util.BaseActivity;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class M22Activity extends AppCompatActivity {
+public class M22Activity extends BaseActivity {
 
     int mYear_start, mMonth_start, mDay_start;
     int mYear_end, mMonth_end, mDay_end;
@@ -103,6 +103,17 @@ public class M22Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Menu5MypageActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        Button logout = findViewById(R.id.drawer_btn_out);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeToken(true);
+                removeToken(false);
+                startActivity(new Intent(getApplicationContext(), SigninActivity.class));
+                finish();
             }
         });
 
