@@ -10,8 +10,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import com.dahyeon.mirim.R;
+import com.mirimapp.mirim.util.BaseActivity;
 
-public class Menu5MypageActivity extends AppCompatActivity {
+public class Menu5MypageActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +73,18 @@ public class Menu5MypageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Menu5MypageActivity.class);
                 startActivity(intent);
+            }
+        });
+
+
+        Button logout = findViewById(R.id.drawer_btn_out);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeToken(true);
+                removeToken(false);
+                startActivity(new Intent(getApplicationContext(), SigninActivity.class));
+                finish();
             }
         });
 
