@@ -48,6 +48,7 @@ class SigninActivity : BaseActivity() {
                                 showToast(it)
                             } else {
                                 startActivity(Intent(applicationContext, MainActivity::class.java))
+                                finish()
                             }
                         }
                     }
